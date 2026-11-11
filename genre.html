@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en" data-site="t-movies">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#080a12">
+  <meta name="description" content="Explore a collection of films by genre.">
+<title>Genre Collection — T MOVIES</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="./assets/css/site.css">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='29' fill='%23080a12' stroke='%23a78bfa' stroke-width='2'/%3E%3Ctext x='32' y='43' text-anchor='middle' font-family='Georgia' font-size='36' fill='%2367e8f9'%3ET%3C/text%3E%3C/svg%3E">
+</head>
+<body data-page="genre">
+<div class="noise" aria-hidden="true"></div><div class="cinema-wall" id="cinema-wall" aria-hidden="true"></div><div class="cursor-glow" aria-hidden="true"></div>
+  <header class="topbar" id="topbar">
+    <div class="nav-inner">
+      <a class="brand" href="./index.html" aria-label="T Movies home"><span class="brand-mark">T</span><span class="brand-name">T MOVIES<small>CINEMA · SERIES · STORIES</small></span></a>
+      <nav class="nav-links" aria-label="Main navigation">
+        <a href="./index.html" data-route="home">Home</a>
+        <a href="./discover.html" data-route="discover">Discover</a>
+        <a href="./movies.html" data-route="movies">Movies</a>
+        <a href="./series.html" data-route="series">Series</a>
+        <a href="./archive.html" data-route="archive">Archive</a>
+        <a href="./my-list.html" data-route="my-list">My List</a>
+      </nav>
+      <div class="nav-actions">
+        <a class="icon-btn" href="./search.html" aria-label="Open search page" title="Search titles"><svg viewBox="0 0 24 24"><circle cx="10.8" cy="10.8" r="6.8"/><path d="m16 16 5 5"/></svg></a>
+        <button class="icon-btn" id="search-open" aria-label="Quick search" title="Quick search /"><svg viewBox="0 0 24 24"><path d="M4 12h16M12 4v16"/></svg></button>
+        <button class="icon-btn" id="refresh-art" aria-label="Refresh movie artwork" title="Refresh artwork"><svg viewBox="0 0 24 24"><path d="M20 7v5h-5M4 17v-5h5"/><path d="M5.5 9a7 7 0 0 1 11.8-2L20 12M4 12l2.7 5a7 7 0 0 0 11.8-2"/></svg></button>
+        <a class="icon-btn" href="./my-list.html" aria-label="My list" title="My List"><svg viewBox="0 0 24 24"><path d="M20.8 8.8c0 5.2-8.8 11-8.8 11s-8.8-5.8-8.8-11a4.6 4.6 0 0 1 8.8-1.8 4.6 4.6 0 0 1 8.8 1.8Z"/></svg></a><span class="count" id="fav-count">0</span>
+        <button class="icon-btn menu-btn" id="menu-toggle" aria-label="Open menu" aria-expanded="false"><svg viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+      </div>
+    </div>
+    <nav class="mobile-menu" id="mobile-menu" aria-label="Mobile navigation">
+      <a href="./index.html">Home</a><a href="./discover.html">Discover</a><a href="./movies.html">Movies</a><a href="./series.html">Series</a><a href="./archive.html">Archive</a><a href="./my-list.html">My List</a><a href="./search.html">Search</a>
+    </nav>
+  </header>
+
+  <main id="main" aria-live="polite"></main>
+
+  <footer>
+    <div class="footer-inner">
+      <div>
+        <div class="footer-brand">T MOVIES <span style="color:var(--accent)">/</span> CINEMA, CONSIDERED</div>
+        <div style="font-size:10px;margin-top:6px">A quieter way to find your next favourite film.</div>
+        <div class="footer-credit">CREATED BY OMI</div>
+      </div>
+      <div class="footer-note">FILM DATA BY TMDB · PERSONAL ARCHIVE VIA GOOGLE DRIVE<br>© <span id="year-now">2026</span> T MOVIES · MADE WITH INTENTION</div>
+    </div>
+  </footer>
+
+  <section class="search-overlay" id="search-overlay" role="dialog" aria-modal="true" aria-label="Quick movie search">
+    <div class="search-panel"><div class="search-top"><svg viewBox="0 0 24 24"><circle cx="10.8" cy="10.8" r="6.8"/><path d="m16 16 5 5"/></svg><input id="search-input" type="search" autocomplete="off" placeholder="Search a film, a feeling, a filmmaker…" aria-label="Search title"><button class="search-close" id="search-close">ESC</button></div><div class="search-hint" id="search-hint">START TYPING TO EXPLORE THE COLLECTION</div><div class="search-results" id="search-results"></div></div>
+  </section>
+  <section class="modal-overlay" id="modal-overlay" role="dialog" aria-modal="true" aria-label="Movie information"><div class="modal-card"><button class="icon-btn modal-close" id="modal-close" aria-label="Close"><svg viewBox="0 0 24 24"><path d="m6 6 12 12M18 6 6 18"/></svg></button><div id="modal-content"></div></div></section>
+  <section class="player-overlay" id="player-overlay" role="dialog" aria-modal="true" aria-label="Movie player"><div class="player-shell"><div class="player-head"><span id="player-title">NOW PLAYING</span><button class="icon-btn" id="player-close" aria-label="Close player"><svg viewBox="0 0 24 24"><path d="m6 6 12 12M18 6 6 18"/></svg></button></div><div class="player-frame" id="player-frame"></div><div class="player-note" id="player-note">Playback is provided by the linked Google Drive file.</div></div></section>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <script src="./tmovies-config.js" defer></script>
+  <script src="./assets/js/app.js" defer></script>
+</body>
+</html>

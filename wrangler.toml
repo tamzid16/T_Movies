@@ -1,0 +1,6 @@
+name = "tmovies-tmdb-proxy"
+main = "tmdb-worker.js"
+compatibility_date = "2026-11-12"
+
+# Set ALLOWED_ORIGIN in the Cloudflare Worker dashboard under Settings > Variables.
+# Store TMDB_API_KEY as a Worker secret (never as a plain variable).
